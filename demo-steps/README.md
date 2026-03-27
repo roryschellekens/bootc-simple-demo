@@ -20,8 +20,8 @@ git clone
 
 Bouw de container lokaal:
 ```
-export NAMESPACE=roryschellekens
-podman build -t ghcr.io/roryschellekens/bootc-simple-demo:latest .
+export NAMESPACE=rorybricks
+podman build -t ghcr.io/$NAMESPACE/bootc-simple-demo:latest .
 ```
 
 Bouw de VMDK image van de bootable container:
@@ -53,18 +53,18 @@ EORUN
 ```
 Bouw de container en push naar GHCR:
 ```
-podman build -t ghcr.io/roryschellekens/bootc-simple-demo:latest .
-podman push ghcr.io/roryschellekens/bootc-simple-demo:latest
+podman build -t ghcr.io/$NAMESPACE/bootc-simple-demo:latest .
+podman push ghcr.io/$NAMESPACE/bootc-simple-demo:latest
 ```
 
 Login on de VM en update de bootable container image:
 ```
-ssh -p 2222 rory@localhost
+ssh -p 2222 core@localhost
 sudo -i
 
 export CR_PAT=xxx_XXXxxxXXxxx
 echo $CR_PAT | podman login ghcr.io -u $GITHUB_USER --password-stdin --authfile /etc/ostree/auth.json
-bootc update ghcr.io/roryschellekens/bootc-simple-demo:latest --apply
+bootc update ghcr.io/$NAMESPACE/bootc-simple-demo:latest --apply
 ``` 
 De VM zal nu rebooten.
 
@@ -82,12 +82,12 @@ dnf install -y cowsay lolcat
 ```
 Bouw de container en push naar GHCR:
 ```
-podman build -t ghcr.io/roryschellekens/bootc-simple-demo:latest .
-podman push ghcr.io/roryschellekens/bootc-simple-demo:latest
+podman build -t ghcr.io/$NAMESPACE/bootc-simple-demo:latest .
+podman push ghcr.io/$NAMESPACE/bootc-simple-demo:latest
 ```
 Login on de VM en update de bootable container image:
 ```
-ssh -p 2222 rory@localhost
+ssh -p 2222 core@localhost
 sudo bootc upgrade --apply
 ```
 Nu is een laag bijgewerkt en de VM zal nu rebooten.
@@ -109,12 +109,12 @@ FROM quay.io/fedora/fedora-bootc:42
 
 Bouw de container en push naar GHCR:
 ```
-podman build -t ghcr.io/roryschellekens/bootc-simple-demo:latest .  
-podman push ghcr.io/roryschellekens/bootc-simple-demo:latest
+podman build -t ghcr.io/$NAMESPACE/bootc-simple-demo:latest .  
+podman push ghcr.io/$NAMESPACE/bootc-simple-demo:latest
 ```
 Login on de VM en update de bootable container image:
 ```
-ssh -p 2222 rory@localhost
+ssh -p 2222 core@localhost
 sudo bootc upgrade --apply
 ```
 Nu is de basis laag bijgewerkt en de VM zal nu rebooten.    

@@ -37,5 +37,5 @@ VBoxManage startvm "$VM_NAME"
 
 
 # Fix Disk issue
-# vi /Users/roryschellekens/Library/VirtualBox/VirtualBox.xml
+# vi ~/Library/VirtualBox/VirtualBox.xml
 #

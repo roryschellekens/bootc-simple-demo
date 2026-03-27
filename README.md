@@ -2,7 +2,7 @@
 
 ## config.toml
 
-Currently the config.toml will create user rory. 
+Currently the config.toml will create user core. 
 
 ## Use GitHub Registry:
 
@@ -11,7 +11,7 @@ Create a Personal Access Token (Classic) with permission write:packages
 Login in ghcr.io:
 
    ```
-export NAMESPACE=roryschellekens
+export NAMESPACE=rorybricks
 export GITHUB_USER=$NAMESPACE
 export CR_PAT=xxx_XXXxxxXXxxx
 echo $CR_PAT | podman login ghcr.io -u $GITHUB_USER --password-stdin
@@ -31,7 +31,7 @@ podman push ghcr.io/$NAMESPACE/bootc-simple-demo:latest
 
 Build anaconda iso (for macosx apple silicon):
    ```
-./build-vmdk-arm64.sh
+./build-iso-arm64.sh
    ```
 
 
