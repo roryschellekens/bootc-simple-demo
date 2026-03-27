@@ -3,7 +3,7 @@
 ## Voorbereidingen
 
 Software installaties op Macos 26 (Apple Silicon)
-* Podman
+* Podman-Desktop
 * Virtualbox
 
 Zorg ervoor dat podman in rootful modes draait.
@@ -20,7 +20,8 @@ git clone
 
 Bouw de container lokaal:
 ```
-podman build -t ghcr.io/brightrory/bootc-simple-demo:latest .
+export NAMESPACE=roryschellekens
+podman build -t ghcr.io/roryschellekens/bootc-simple-demo:latest .
 ```
 
 Bouw de VMDK image van de bootable container:
@@ -52,8 +53,8 @@ EORUN
 ```
 Bouw de container en push naar GHCR:
 ```
-podman build -t ghcr.io/brightrory/bootc-simple-demo:latest .
-podman push ghcr.io/brightrory/bootc-simple-demo:latest
+podman build -t ghcr.io/roryschellekens/bootc-simple-demo:latest .
+podman push ghcr.io/roryschellekens/bootc-simple-demo:latest
 ```
 
 Login on de VM en update de bootable container image:
@@ -63,7 +64,7 @@ sudo -i
 
 export CR_PAT=xxx_XXXxxxXXxxx
 echo $CR_PAT | podman login ghcr.io -u $GITHUB_USER --password-stdin --authfile /etc/ostree/auth.json
-bootc update ghcr.io/brightrory/bootc-simple-demo:latest --apply
+bootc update ghcr.io/roryschellekens/bootc-simple-demo:latest --apply
 ``` 
 De VM zal nu rebooten.
 
@@ -81,8 +82,8 @@ dnf install -y cowsay lolcat
 ```
 Bouw de container en push naar GHCR:
 ```
-podman build -t ghcr.io/brightrory/bootc-simple-demo:latest .
-podman push ghcr.io/brightrory/bootc-simple-demo:latest
+podman build -t ghcr.io/roryschellekens/bootc-simple-demo:latest .
+podman push ghcr.io/roryschellekens/bootc-simple-demo:latest
 ```
 Login on de VM en update de bootable container image:
 ```
@@ -108,8 +109,8 @@ FROM quay.io/fedora/fedora-bootc:42
 
 Bouw de container en push naar GHCR:
 ```
-podman build -t ghcr.io/brightrory/bootc-simple-demo:latest .  
-podman push ghcr.io/brightrory/bootc-simple-demo:latest
+podman build -t ghcr.io/roryschellekens/bootc-simple-demo:latest .  
+podman push ghcr.io/roryschellekens/bootc-simple-demo:latest
 ```
 Login on de VM en update de bootable container image:
 ```

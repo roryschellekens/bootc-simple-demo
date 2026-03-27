@@ -11,6 +11,8 @@ Create a Personal Access Token (Classic) with permission write:packages
 Login in ghcr.io:
 
    ```
+export NAMESPACE=roryschellekens
+export GITHUB_USER=$NAMESPACE
 export CR_PAT=xxx_XXXxxxXXxxx
 echo $CR_PAT | podman login ghcr.io -u $GITHUB_USER --password-stdin
    ```

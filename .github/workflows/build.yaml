@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-24.04-arm
     env:
       IMAGE_NAME: bootc-simple-demo
-      REGISTRY: ghcr.io/brightrory
+      REGISTRY: ghcr.io/roryschellekens
    
     steps:
       - name: Clone the repository
